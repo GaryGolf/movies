@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "jsx": "react",
+    "outDir": "./dist/",
+    "target": "es5",
+    "baseUrl": "./src",
+    "lib": ["esnext", "dom"],
+    "experimentalDecorators": true
+  },
+  "include": ["./src/**/*"],
+  "exclude": ["node_modules"]
+}
