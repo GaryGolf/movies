@@ -6,6 +6,7 @@
     "target": "es5",
     "baseUrl": "./src",
     "lib": ["esnext", "dom"],
+    "sourceMap": true,
     "experimentalDecorators": true
   },
   "include": ["./src/**/*"],

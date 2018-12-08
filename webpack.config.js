@@ -2,7 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-const config = {
+const clientDevConfig = {
   mode: 'development',
   entry: './src/client.tsx',
   output: {
@@ -18,23 +18,12 @@ const config = {
     compress: true,
     port: 3000,
   },
+  devtool: 'inline-source-map',
 
   module: {
     rules: [
       { test: /\.tsx?$/, loader: 'ts-loader' },
-      { test: /\.css$/, 
-        use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: {
-            loader: 'css-loader',
-            query: {
-              modules: true,
-              sourceMap: false,
-              importLoaders: 1,
-              localIdentName: '[local]__[hash:base64:5]'
-            }
-          }
-      })}
+      { test: /\.css$/, use: ['style-loader', 'css-loader'] },
     ]
   },
 
@@ -44,4 +33,4 @@ const config = {
   ],
 };
 
-module.exports = config;
+module.exports = clientDevConfig;
