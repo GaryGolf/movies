@@ -10,12 +10,17 @@ const clientDevConfig = {
       path: path.resolve(__dirname, 'dist'),
   },
   resolve: {
-      extensions: ['.js', '.ts', '.tsx'],
+    extensions: ['.js', '.ts', '.tsx'],
+    alias: {
+      'components': path.resolve(__dirname, 'src/components')
+    }
   },
 
   devServer: {
     contentBase: path.join(__dirname, "dist"),
-    compress: true,
+    // compress: true,
+    inline: true,
+    hot: true,
     port: 3000,
   },
   devtool: 'inline-source-map',
@@ -24,6 +29,18 @@ const clientDevConfig = {
     rules: [
       { test: /\.tsx?$/, loader: 'ts-loader' },
       { test: /\.css$/, use: ['style-loader', 'css-loader'] },
+      // { test: /\.css$/, 
+      //   use: [
+      //     { loader: 'style-loader' },
+      //     { loader: 'css-loader', options: {  
+      //         modules: true,
+      //         importLoaders: 1,
+      //         localIdentName: '[local]__[hash:base64:5]'
+      //       } 
+      //     }
+
+      //   ]  
+      // }
     ]
   },
 
