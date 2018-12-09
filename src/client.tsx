@@ -1,8 +1,5 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+import App from './app';
 
-const app = (
-  <h1>Movies</h1>
-);
-
-ReactDOM.render(app, document.getElementById('app'));
+ReactDOM.render(<App/>, document.getElementById('app'));
