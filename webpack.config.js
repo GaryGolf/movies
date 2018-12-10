@@ -16,31 +16,29 @@ const clientDevConfig = {
     }
   },
 
-  devServer: {
-    contentBase: path.join(__dirname, "dist"),
-    // compress: true,
-    inline: true,
-    hot: true,
-    port: 3000,
+  watchOptions: {
+    aggregateTimeout: 300,
+    poll: 1000,
+    ignored: /node_modules/
   },
   devtool: 'inline-source-map',
 
   module: {
     rules: [
       { test: /\.tsx?$/, loader: 'ts-loader' },
-      { test: /\.css$/, use: ['style-loader', 'css-loader'] },
-      // { test: /\.css$/, 
-      //   use: [
-      //     { loader: 'style-loader' },
-      //     { loader: 'css-loader', options: {  
-      //         modules: true,
-      //         importLoaders: 1,
-      //         localIdentName: '[local]__[hash:base64:5]'
-      //       } 
-      //     }
+      // { test: /\.css$/, use: ['style-loader', 'css-loader'] },
+      { test: /\.css$/, 
+        use: [
+          { loader: 'style-loader' },
+          { loader: 'css-loader', options: {  
+              modules: true,
+              importLoaders: 1,
+              localIdentName: '[local]__[hash:base64:5]'
+            } 
+          }
 
-      //   ]  
-      // }
+        ]  
+      }
     ]
   },
 
