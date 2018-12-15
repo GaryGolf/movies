@@ -1,30 +1,33 @@
 import * as React from 'react';
-import api, { PopularDataResult } from '../api';
-import Movie from './Movie';
-import { RouteComponentProps } from 'react-router-dom'
+import { RouteComponentProps } from 'react-router-dom';
+import api, { MovieDetails } from '../api';
+
 interface Params {
   id: string;
 }
 type Props = RouteComponentProps<Params>;
 interface State {
-  // movies: PopularDataResult[];
+  details: MovieDetails;
 }
 export default class MovieDetailsPage extends React.Component<Props, State> {
 
   constructor(props:Props) {
-        super(props);
-        this.state = {};
-      }
+    super(props);
+    this.state = { details: null };
+  }
       
   componentDidMount(){
-    // api.getPopular().then(result => this.setState({ movies: result.data.results }));
-    console.log('id: ', this.props.match.params.id);
+    const { id } = this.props.match.params;
+    api.getDetails(id).then(result => this.setState({ details: result.data }));
   }
 
   render() {
+
+    const { details } = this.state;
+    if (!details) return null;
     return (
       <div> 
-        Details
+        <h2>{details.title}</h2>
       </div>
     )
   }
