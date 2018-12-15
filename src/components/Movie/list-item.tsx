@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Link } from 'react-router-dom';
 import { PopularDataResult } from '../../api';
 
 import * as styles from './list-item.css'
@@ -10,6 +11,10 @@ interface Props {
 export class ListItem extends React.PureComponent<Props, {}> {
 
   render() {
-    return <li className={styles.listItem}>{this.props.item.title}</li>
+    return (
+      <Link to={`/details/${this.props.item.id}`}>
+        <li className={styles.listItem}>{this.props.item.title}</li>
+      </Link>
+    )
   }
 }
