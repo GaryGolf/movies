@@ -1,3 +1,3 @@
-import { PopularData } from '../api';
+import { PopularDataResult } from '../api';
 
-export type PopularMoviesStore  = PopularData;
+export type PopularMoviesStore  = PopularDataResult;
