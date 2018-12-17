@@ -1,1 +1,4 @@
-export default interface AppStore {};
+import { PopularMoviesStore } from './popular-movies/types';
+export default interface AppStore {
+  popular: PopularMoviesStore[];
+};
