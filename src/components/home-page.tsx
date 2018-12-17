@@ -1,6 +1,7 @@
 import * as React from 'react';
-import api, { PopularDataResult } from '../api';
+import api, { PopularDataResult } from '../store/api';
 import Movie from './Movie';
+// import * as actions from '../store/actions';
 
 interface Props {};
 interface State {
@@ -12,6 +13,10 @@ export default class HomePage extends React.Component<Props, State> {
         super(props);
         this.state = { movies: []};
       }
+  
+  static loadData() {
+
+  }
       
   componentDidMount(){
     api.getPopular().then(result => this.setState({ movies: result.data.results }));

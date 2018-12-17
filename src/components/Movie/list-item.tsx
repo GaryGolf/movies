@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
-import { PopularDataResult } from '../../api';
+import { PopularDataResult } from '../../store/api';
 
 import * as styles from './list-item.css'
 

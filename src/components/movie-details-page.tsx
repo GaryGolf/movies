@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { RouteComponentProps } from 'react-router-dom';
-import api, { MovieDetails } from '../api';
+import api, { MovieDetails } from '../store/api';
 
 interface Params {
   id: string;

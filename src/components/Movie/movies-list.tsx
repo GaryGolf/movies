@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ListItem } from './list-item';
-import { PopularDataResult } from '../../api';
+import { PopularDataResult } from '../../store/api';
 
 import * as styles from './movies-list.css';
 
