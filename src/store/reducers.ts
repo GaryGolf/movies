@@ -1,4 +1,8 @@
 import { combineReducers, Reducer } from 'redux';
 import AppStore from './types';
 
-export default combineReducers({ }) as Reducer<AppStore>;
+import popular from './popular-movies/reducer';
+
+export default combineReducers({ 
+  popular
+}) as Reducer<AppStore>;
