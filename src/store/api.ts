@@ -1,5 +1,5 @@
 import Axios, { AxiosPromise, AxiosResponse } from 'axios';
-import { API_KEY } from './constants';
+import { API_KEY } from '../../env/constants';
 
 
 export interface PopularDataResult {

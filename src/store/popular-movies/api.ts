@@ -1,0 +1,9 @@
+import Axios, { AxiosPromise, AxiosResponse } from 'axios';
+import { API_KEY } from '../../../env/constants';
+import {PopularMovieData} from './definition'
+
+
+export const getPopular = (page = 1):AxiosPromise<PopularMovieData> => Axios
+    .get(`https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=${page}`)
+    .then((result:AxiosResponse<PopularMovieData>) => result);
+
