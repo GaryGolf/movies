@@ -18,7 +18,7 @@ export class List extends React.PureComponent<Props, {}> {
 
     return (
       <div className={styles.container}>
-        <ul className={styles.list}> 
+        <ul className={styles.listItem}> 
           {items} 
           <Waypoint
             scrollableAncestor={typeof window !== 'undefined' ? window : null}

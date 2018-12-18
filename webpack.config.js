@@ -28,31 +28,20 @@ const clientDevConfig = {
   module: {
     rules: [
       { test: /\.tsx?$/, loader: 'ts-loader' },
-      // { test: /\.css$/, use: ['style-loader', 'css-loader'] },
-      { test: /\.css$/, 
-        use: [
-          { loader: 'style-loader' },
-          { loader: 'css-loader', options: {  
-              modules: true,
-              importLoaders: 1,
-              localIdentName: '[local]__[hash:base64:5]'
-            } 
-          }
-
-        ]  
-      },
       { test: /\.scss$/, 
-        use: [
-          { loader: 'style-loader' },
-          { loader: 'css-loader', options: {  
+        use: [ 
+          { loader: 'style-loader' }, 
+          { loader: 'css-loader',
+            options: {
               modules: true,
               importLoaders: 1,
-              localIdentName: '[local]__[hash:base64:5]'
-            } 
+              localIdentName: '[local]__[hash:base64:5]',
+              sourceMap: true
+            }
           },
-          { loader: 'sass-loader', options: { sourceMap: true }}
-        ]  
-      }
+          { loader: 'sass-loader', options: { sourceMap: true } }
+        ] 
+      }, 
     ]
   },
 
