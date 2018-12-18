@@ -1,6 +1,5 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const clientDevConfig = {
   mode: 'development',
@@ -46,7 +45,6 @@ const clientDevConfig = {
   },
 
   plugins: [
-    new ExtractTextPlugin("styles.css"),
     new HtmlWebpackPlugin({ template: './src/index.html' }),
   ],
 };
