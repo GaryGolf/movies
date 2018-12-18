@@ -12,7 +12,9 @@ const clientDevConfig = {
   resolve: {
     extensions: ['.js', '.ts', '.tsx'],
     alias: {
-      'components': path.resolve(__dirname, 'src/components')
+      'components': path.resolve(__dirname, 'src/components'),
+      'store': path.resolve(__dirname, 'src/store'),
+      'env': path.resolve(__dirname, 'env')
     }
   },
 
