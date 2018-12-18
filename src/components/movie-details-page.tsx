@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { Dispatch } from 'redux';
 import { RouteComponentProps } from 'react-router-dom';
-import api, { MovieDetails } from '../store/api';
 import AppStore, { MovieDetailsStore } from 'store/definitions';
 import { fetchMovieDetails } from 'store';
 
@@ -10,7 +9,6 @@ const { connect } = require('react-redux');
 interface Params {
   id: string;
 }
-
 interface Store {
   details: MovieDetailsStore;
   dispatch: Dispatch;
@@ -36,7 +34,7 @@ export default class MovieDetailsPage extends React.Component<Store & Router, {}
   render() {
 
     const { details } = this.props;
-    if (!details) return null;
+    if (!details) return <p>loading...</p>;
     return (
       <div> 
         <h2>{details.title}</h2>

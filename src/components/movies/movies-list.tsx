@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { ListItem } from './list-item';
-import { PopularDataResult } from '../../store/api';
+import { PopularMoviesStore } from 'store/definitions';
 
 import * as styles from './movies-list.css';
 
 interface Props {
-  movies: PopularDataResult[];
+  movies: PopularMoviesStore;
 };
 
 export class List extends React.PureComponent<Props, {}> {
