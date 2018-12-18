@@ -1,14 +1,12 @@
 import * as React from 'react';
 import { Dispatch, bindActionCreators } from 'redux';
-import { fetchPopularMovies } from 'store';
-import AppStore, { PopularMoviesStore } from '../store/definitions';
+import { AppStore, PopularMoviesStore, fetchPopularMovies } from 'store';
 import Movie from './movies';
 
 const { connect } = require('react-redux');
 
 interface Store {
   popular: PopularMoviesStore;
-  dispatch: Dispatch;
 }
 
 interface Actions {

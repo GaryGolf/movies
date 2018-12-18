@@ -1,5 +1,5 @@
 import { getPopular } from './api';
-import AppStore from '../definitions';
+import { AppStore } from 'store';
 
 export const FETCH_POPULAR_MOVIES = 'FETCH_POPULAR_MOVIES';
 
