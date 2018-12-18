@@ -1,8 +1,16 @@
 .listItem {
+  display: block;
   color: navy;
   list-style: none;
+  border: 1px solid black;
+  border-radius: 3px;
+  padding: 10px;
+  margin: 20px;
+  height: 300px;
 }
 
 .listLink {
-  flex: 1 0 100px;
+  display: block;
+  flex: 1 0 33.33%;
+  text-decoration: none;
 }
