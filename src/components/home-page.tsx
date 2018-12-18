@@ -24,15 +24,16 @@ export default class HomePage extends React.Component<Store, {}> {
       
   componentDidMount(){
     const { popular, dispatch } = this.props;
-    if (!popular || !popular.length) HomePage.fetchData({ dispatch });
+    if (!popular) HomePage.fetchData({ dispatch });
   }
 
   render() {
     const { popular } = this.props;
 
+    if (!popular) return <p>loading...</p>;
     return (
       <div> 
-        <Movie.List movies={popular}/>
+        <Movie.List movies={popular.results}/>
       </div>
     )
   }

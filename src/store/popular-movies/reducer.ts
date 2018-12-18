@@ -1,8 +1,8 @@
-import { PopularMovie } from './definition'
+import { PopularMovieData } from './definition'
 import { 
   FETCH_POPULAR_MOVIES 
 } from './actions'
-const initialState: PopularMovie[] = []
+const initialState: PopularMovieData = null
 
 export default ( state = initialState, action = null) => {
   const { payload } = action;

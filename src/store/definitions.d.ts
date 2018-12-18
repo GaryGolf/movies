@@ -1,7 +1,7 @@
-import { PopularMovie } from './popular-movies/definition';
+import { PopularMovieData } from './popular-movies/definition';
 import { MovieDetails } from './movie-details/definition'
 
-export type PopularMoviesStore = PopularMovie[];
+export type PopularMoviesStore = PopularMovieData;
 export type MovieDetailsStore = MovieDetails;
 
 export default interface AppStore {
