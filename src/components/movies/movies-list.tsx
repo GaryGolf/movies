@@ -7,23 +7,21 @@ import * as styles from './movies-list.css';
 
 interface Props {
     movies: PopularMovie[];
+    onScrollBottom: () => void;
 };
 
 export class List extends React.PureComponent<Props, {}> {
 
-    private onEnterWaypoint() {
-        console.log('waypoint')
-    }
-
   render() {
-    const items = this.props.movies.map(item => <ListItem key={item.id} item={item}/>);
+    const { movies, onScrollBottom } = this.props;
+    const items = movies.map(item => <ListItem key={item.id} item={item}/>);
 
     return (
       <ul className={styles.moviesList}> 
         {items} 
         <Waypoint
 					scrollableAncestor={typeof window !== 'undefined' ? window : null}
-					onEnter={this.onEnterWaypoint}
+					onEnter={onScrollBottom}
 				/>
       </ul>
     );
