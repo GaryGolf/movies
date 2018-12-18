@@ -1,0 +1,11 @@
+.container {
+  height: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.listItem {
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+}

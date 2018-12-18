@@ -3,6 +3,12 @@ declare module '*.css' {
   export = styles;
 }
 
+declare module '*.scss' {
+  const styles: any;
+  export = styles;
+}
+
+
 interface Window {
   __PRELOADED_STATE__: string;
 }

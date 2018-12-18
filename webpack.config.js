@@ -40,6 +40,18 @@ const clientDevConfig = {
           }
 
         ]  
+      },
+      { test: /\.scss$/, 
+        use: [
+          { loader: 'style-loader' },
+          { loader: 'css-loader', options: {  
+              modules: true,
+              importLoaders: 1,
+              localIdentName: '[local]__[hash:base64:5]'
+            } 
+          },
+          { loader: 'sass-loader', options: { sourceMap: true }}
+        ]  
       }
     ]
   },

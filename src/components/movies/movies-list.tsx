@@ -3,7 +3,7 @@ import Waypoint from 'react-waypoint';
 import { ListItem } from './list-item';
 import { PopularMovie } from 'store/popular-movies/definition'
 
-import * as styles from './movies-list.css';
+import * as styles from './movies-list.scss';
 
 interface Props {
     movies: PopularMovie[];
@@ -17,13 +17,15 @@ export class List extends React.PureComponent<Props, {}> {
     const items = movies.map(item => <ListItem key={item.id} item={item}/>);
 
     return (
-      <ul className={styles.moviesList}> 
-        {items} 
-        <Waypoint
-					scrollableAncestor={typeof window !== 'undefined' ? window : null}
-					onEnter={onScrollBottom}
-				/>
-      </ul>
+      <div className={styles.container}>
+        <ul className={styles.list}> 
+          {items} 
+          <Waypoint
+            scrollableAncestor={typeof window !== 'undefined' ? window : null}
+            onEnter={onScrollBottom}
+          />
+        </ul>
+      </div>
     );
   }
 }
