@@ -1,29 +1,41 @@
 import * as React from 'react';
+import { Dispatch } from 'redux';
 import { RouteComponentProps } from 'react-router-dom';
 import api, { MovieDetails } from '../store/api';
+import AppStore, { MovieDetailsStore } from 'store/definitions';
+import { fetchMovieDetails } from 'store';
+
+const { connect } = require('react-redux');
 
 interface Params {
   id: string;
 }
-type Props = RouteComponentProps<Params>;
-interface State {
-  details: MovieDetails;
-}
-export default class MovieDetailsPage extends React.Component<Props, State> {
 
-  constructor(props:Props) {
-    super(props);
-    this.state = { details: null };
+interface Store {
+  details: MovieDetailsStore;
+  dispatch: Dispatch;
+}
+type Router = RouteComponentProps<Params>;
+
+@connect(
+  (state:AppStore) => ({
+    details: state.details
+  })
+)
+export default class MovieDetailsPage extends React.Component<Store & Router, {}> {
+
+  static fetchData({ dispatch, params = { id: null }, query = {}}) {
+    dispatch(fetchMovieDetails(params.id))
   }
       
   componentDidMount(){
-    const { id } = this.props.match.params;
-    api.getDetails(id).then(result => this.setState({ details: result.data }));
+    const { dispatch, match: { params }} = this.props;
+    MovieDetailsPage.fetchData({ dispatch, params })
   }
 
   render() {
 
-    const { details } = this.state;
+    const { details } = this.props;
     if (!details) return null;
     return (
       <div> 
