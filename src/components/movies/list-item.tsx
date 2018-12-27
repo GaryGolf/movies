@@ -17,7 +17,7 @@ export class ListItem extends React.PureComponent<Props, {}> {
       <Link className={styles.listLink} to={`/details/${id}`}>
         <li className={styles.listItem}>
           <h3> {title} </h3>
-          <img src={'https://image.tmdb.org/t/p/w185/' + poster_path}/>
+          <img className={styles.poster} src={'https://image.tmdb.org/t/p/w185/' + poster_path}/>
         </li>
       </Link>
     )
