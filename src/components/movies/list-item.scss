@@ -26,3 +26,15 @@
   top: 0px; left: 0px; bottom: 0px; right: 0px;
   z-index: -1;
 }
+
+.pane {
+  position: absolute;
+  top: 6px; left: 6px; bottom: 6px; right: 6px;
+  padding: 10px;
+  background-color: rgba(black,.3);
+  color: white;
+  border-radius: 3px;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: flex-end;
+}
