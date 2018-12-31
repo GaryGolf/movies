@@ -6,8 +6,9 @@
   border-radius: 3px;
   padding: 10px;
   margin: 20px;
-  height: 300px;
+  height: 340px;
   position: relative;
+  overflow: hidden;
 }
 
 .listLink {
@@ -17,7 +18,11 @@
 }
 
 .poster {
-  width: 100%;
-  height: auto;
   position: absolute;
+  min-width: 100%;
+  min-height: 120%;
+  width: auto;
+  height: auto;
+  top: 0px; left: 0px; bottom: 0px; right: 0px;
+  z-index: -1;
 }
