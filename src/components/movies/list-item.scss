@@ -6,25 +6,19 @@
   border-radius: 3px;
   padding: 10px;
   margin: 20px;
-  height: 340px;
+  height: 400px;
   position: relative;
   overflow: hidden;
+  background-color: #555;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .listLink {
   display: block;
   flex: 1 0 33.33%;
   text-decoration: none;
-}
-
-.poster {
-  position: absolute;
-  min-width: 100%;
-  min-height: 120%;
-  width: auto;
-  height: auto;
-  top: 0px; left: 0px; bottom: 0px; right: 0px;
-  z-index: -1;
 }
 
 .pane {
@@ -38,3 +32,4 @@
   flex-flow: column nowrap;
   align-items: flex-end;
 }
+
