@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Dispatch, bindActionCreators } from 'redux';
-import { AppStore, PopularMoviesStore, fetchPopularMovies } from 'store';
+import { AppStore, PopularMoviesStore, 
+  fetchPopularMovies, searchPopularMovies } from 'store';
 import Movie from './movies';
 
 const { connect } = require('react-redux');
@@ -12,6 +13,7 @@ interface Store {
 interface Actions {
   actions: {
     fetchPopularMovies: (page?: number) => void;
+    searchPopularMovies: (query: string) => void;
   }
 }
 
@@ -20,7 +22,7 @@ interface Actions {
     popular: state.popular
   }), 
   dispatch => ({
-    actions: bindActionCreators({ fetchPopularMovies }, dispatch)
+    actions: bindActionCreators({ fetchPopularMovies, searchPopularMovies }, dispatch)
   })
 )
 export default class HomePage extends React.Component<Store & Actions, {}> {
@@ -34,12 +36,17 @@ export default class HomePage extends React.Component<Store & Actions, {}> {
     if (!popular) actions.fetchPopularMovies()
   }
 
+  private handleSearch(query:string) {
+    this.props.actions.searchPopularMovies(query)
+  }
+
   render() {
     const { popular, actions } = this.props;
 
     if (!popular) return <p>loading...</p>;
     return (
       <div> 
+        <Movie.Search onInput={this.handleSearch.bind(this)}/>
         <Movie.List 
           movies={popular.results}
           onScrollBottom={actions.fetchPopularMovies}
