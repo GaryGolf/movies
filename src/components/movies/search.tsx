@@ -1,4 +1,5 @@
 import * as React from 'react'
+import * as styles from './search.scss'
 
 interface Props {
   onInput: (query:string) => void;
@@ -14,7 +15,7 @@ export class Search extends React.PureComponent<Props, State> {
 
   render() {
     return (
-      <div>
+      <div className={styles.container}> 
         <input onChange={this.handleSearchChange.bind(this)}/>
       </div>
     )
