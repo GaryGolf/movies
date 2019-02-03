@@ -43,7 +43,7 @@ export default class MovieDetailsPage extends React.Component<Store & Router & A
 
     const { details } = this.props;
     if (!details) return <p>loading...</p>;
-    
+
     return (
       <div> 
         <h2>{details.title}</h2>
