@@ -8,6 +8,16 @@ interface State {}
 
 export class Search extends React.PureComponent<Props, State> {
 
+  private searchInput: React.RefObject<HTMLInputElement>;
+
+  constructor(props:Props) {
+    super(props);
+    this.searchInput = React.createRef();
+  }
+  componentDidMount() {
+    this.searchInput.current.focus();
+  }
+
   private handleSearchChange(e) {
     const { value } = e.currentTarget;
     this.props.onInput(value);
@@ -16,7 +26,7 @@ export class Search extends React.PureComponent<Props, State> {
   render() {
     return (
       <div className={styles.container}> 
-        <input onChange={this.handleSearchChange.bind(this)}/>
+       Search <input ref={this.searchInput} onChange={this.handleSearchChange.bind(this)}/>
       </div>
     )
   }
