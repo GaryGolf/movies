@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Dispatch, bindActionCreators } from 'redux';
+import debounce from 'lodash/debounce';
 import { AppStore, PopularMoviesStore, SearchKeywordStore,
   fetchPopularMovies, searchPopularMovies, searchMoviesKeyword } from 'store';
 import Movie from './movies';
@@ -26,12 +27,19 @@ interface Actions {
   }), 
   dispatch => ({
     actions: bindActionCreators({ fetchPopularMovies, searchPopularMovies, searchMoviesKeyword }, dispatch)
-  })
+  }),
+  null
 )
 export default class HomePage extends React.Component<Store & Actions, {}> {
 
   static fetchData({ dispatch, params = {}, query = {}}) {
     dispatch(fetchPopularMovies());
+  }
+
+  constructor(props:Store & Actions) {
+    super(props);
+    this.searchPopularMovies = this.searchPopularMovies.bind(this);
+    this.searchPopularMovies = debounce(this.searchPopularMovies, 800);
   }
       
   async componentDidMount(){
@@ -40,8 +48,12 @@ export default class HomePage extends React.Component<Store & Actions, {}> {
   }
 
   private handleSearch(query:string) {
-    // this.props.actions.searchPopularMovies(query)
     this.props.actions.searchMoviesKeyword(query);
+    this.searchPopularMovies(query);
+  }
+  
+  private searchPopularMovies(query: string) {
+    this.props.actions.searchPopularMovies(query)
   }
 
   render() {
