@@ -1,4 +1,10 @@
+const webpack = require('webpack');
 const path = require('path');
+
+// variables
+const isProduction = process.argv.indexOf('-p') >= 0;
+const sourcePath = path.join(__dirname, './src');
+const outPath = path.join(__dirname, './dist');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const clientDevConfig = {
@@ -6,7 +12,7 @@ const clientDevConfig = {
   entry: './src/client.tsx',
   output: {
       filename: 'bundle.js',
-      path: path.resolve(__dirname, 'dist'),
+      path: outPath,
   },
   resolve: {
     extensions: ['.js', '.ts', '.tsx'],
@@ -46,7 +52,25 @@ const clientDevConfig = {
 
   plugins: [
     new HtmlWebpackPlugin({ template: './src/index.html' }),
+    new webpack.DefinePlugin({
+      'process.env.DEV': process.env.DEV,
+      'process.env.API_HOST': JSON.stringify(process.env.API_HOST),
+    }),
   ],
+
+  devServer: {
+    contentBase: sourcePath,
+    hot: true,
+    stats: {
+      warnings: false
+    },
+  },
+  node: {
+    // workaround for webpack-dev-server issue
+    // https://github.com/webpack/webpack-dev-server/issues/60#issuecomment-103411179
+    fs: 'empty',
+    net: 'empty'
+  }
 };
 
 module.exports = clientDevConfig;
